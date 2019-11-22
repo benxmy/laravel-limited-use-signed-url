@@ -1,6 +1,6 @@
 <?php
 
-namespace Intellow\LaravelSingleUseSignedUrl;
+namespace Intellow\SingleUseSignedUrl;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -16,13 +16,15 @@ class LaravelSingleUseSignedUrlServiceProvider extends ServiceProvider
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-single-use-signed-url');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-single-use-signed-url');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
+        app('router')->aliasMiddleware('validateSingleUseSignedUrl', ValidateSingleUseSignedUrl::class);
+
         if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-single-use-signed-url.php'),
-            ], 'config');
+//            $this->publishes([
+//                __DIR__.'/../config/config.php' => config_path('laravel-single-use-signed-url.php'),
+//            ], 'config');
 
             // Publishing the views.
             /*$this->publishes([
@@ -50,11 +52,11 @@ class LaravelSingleUseSignedUrlServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-single-use-signed-url');
+//        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-single-use-signed-url');
 
         // Register the main class to use with the facade
-        $this->app->singleton('laravel-single-use-signed-url', function () {
-            return new LaravelSingleUseSignedUrl;
+        $this->app->bind('laravel-single-use-signed-url', function () {
+            return new SingleUseSignedUrl;
         });
     }
 }

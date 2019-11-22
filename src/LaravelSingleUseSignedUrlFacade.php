@@ -1,6 +1,6 @@
 <?php
 
-namespace Intellow\LaravelSingleUseSignedUrl;
+namespace Intellow\SingleUseSignedUrl;
 
 use Illuminate\Support\Facades\Facade;
 
