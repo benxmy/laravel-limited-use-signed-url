@@ -16,16 +16,29 @@ composer require intellow/laravel-single-use-signed-url
 ```
 
 ## Usage
+I primarily use this to give users a link to login, but want the security of knowing that once the link has been used, it cannot ever be used again (which is why I don't use Laravel Signed URLs)
+
+Make sure to run `php artisan migrate` after you install.
+
+First create a route that accepts a {user} as a parameter and give it a name. For example:
+
+```php
+Route::get('/email-login/{user}', [SingleUseSignedUrlController::class, 'handle'])
+->name('one-time-email-login')
+->middleware('validateSingleUseSignedUrl');
+```
+
+Then in a controller you can generate a single use signed url to this route with the following:
 
 ``` php
-// Usage description here
+$url = SingleUseSignedUrl::make('email-login', $userId, $expiresInMinutes);
 ```
+
+Then just send that $url to the user in a notification or email and they can click the link once to login.
 
 ### Testing
 
-``` bash
-composer test
-```
+Tests are not working right now.
 
 ### Changelog
 
