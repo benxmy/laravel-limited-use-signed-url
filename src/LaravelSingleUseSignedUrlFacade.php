@@ -1,11 +1,11 @@
 <?php
 
-namespace Intellow\SingleUseSignedUrl;
+namespace Benxmy\SingleUseSignedUrl;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Intellow\LaravelSingleUseSignedUrl\Skeleton\SkeletonClass
+ * @see \Benxmy\LaravelSingleUseSignedUrl\Skeleton\SkeletonClass
  */
 class LaravelSingleUseSignedUrlFacade extends Facade
 {

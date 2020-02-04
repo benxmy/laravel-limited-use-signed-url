@@ -1,12 +1,12 @@
 <?php
 
-namespace Intellow\LaravelSingleUseSignedUrl\Tests;
+namespace Benxmy\LaravelSingleUseSignedUrl\Tests;
 
 use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Facades\Route;
-use Intellow\SingleUseSignedUrl\LaravelSingleUseSignedUrlFacade;
-use Intellow\SingleUseSignedUrl\LaravelSingleUseSignedUrlServiceProvider;
-use Intellow\SingleUseSignedUrl\SingleUseSignedUrl;
+use Benxmy\SingleUseSignedUrl\LaravelSingleUseSignedUrlFacade;
+use Benxmy\SingleUseSignedUrl\LaravelSingleUseSignedUrlServiceProvider;
+use Benxmy\SingleUseSignedUrl\SingleUseSignedUrl;
 use Orchestra\Testbench\TestCase;
 
 class ExampleTest extends TestCase

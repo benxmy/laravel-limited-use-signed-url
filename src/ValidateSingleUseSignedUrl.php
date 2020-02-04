@@ -1,6 +1,6 @@
 <?php
 
-namespace Intellow\SingleUseSignedUrl;
+namespace Benxmy\SingleUseSignedUrl;
 
 use Closure;
 use Illuminate\Routing\Exceptions\InvalidSignatureException;
@@ -10,7 +10,10 @@ class ValidateSingleUseSignedUrl
     public function handle($request, Closure $next)
     {
         $singleUseSignedUrl = SingleUseSignedUrl::where('key', $request->singleUseKey)
-            ->whereNull('accessed_at')->get()->first();
+            ->whereNull('reaccessed_at')
+            ->get()
+            ->first();
+
         if(!$singleUseSignedUrl) {
             throw new InvalidSignatureException;
         }
@@ -31,10 +34,18 @@ class ValidateSingleUseSignedUrl
             throw new InvalidSignatureException;
         }
 
-        $singleUseSignedUrl->update([
-            'accessed_by_ip' => $request->ip(),
-            'accessed_at' => now(),
-        ]);
+        if(!$singleUseSignedUrl->accessed_at) {
+            $singleUseSignedUrl->update([
+                'accessed_by_ip' => $request->ip(),
+                'accessed_at' => now(),
+            ]);
+        }
+        else {
+            $singleUseSignedUrl->update([
+                'reaccessed_by_ip' => $request->ip(),
+                'reaccessed_at' => now(),
+            ]);            
+        }
 
         return $next($request);
     }

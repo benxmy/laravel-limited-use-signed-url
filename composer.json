@@ -1,11 +1,11 @@
 {
-    "name": "intellow/laravel-single-use-signed-url",
+    "name": "benxmy/laravel-single-use-signed-url",
     "description": "Laravel Single Use Signed URL",
     "keywords": [
-        "intellow",
+        "benxmy",
         "laravel-single-use-signed-url"
     ],
-    "homepage": "https://github.com/intellow/laravel-single-use-signed-url",
+    "homepage": "https://github.com/benxmy/laravel-single-use-signed-url",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -13,7 +13,13 @@
             "name": "Intellow",
             "email": "kevin@intellow.com",
             "role": "Developer"
+        },
+        {
+            "name": "Ben",
+            "email": "benxmy@gmail.com",
+            "role": "Developer"
         }
+
     ],
     "require": {
         "php": "^7.1",
@@ -21,16 +27,16 @@
     },
     "require-dev": {
         "orchestra/testbench": "3.8.*",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^8.5"
     },
     "autoload": {
         "psr-4": {
-            "Intellow\\SingleUseSignedUrl\\": "src"
+            "Benxmy\\SingleUseSignedUrl\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Intellow\\SingleUseSignedUrl\\Tests\\": "tests"
+            "Benxmy\\SingleUseSignedUrl\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,10 +50,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Intellow\\SingleUseSignedUrl\\LaravelSingleUseSignedUrlServiceProvider"
+                "Benxmy\\SingleUseSignedUrl\\LaravelSingleUseSignedUrlServiceProvider"
             ],
             "aliases": {
-                "SingleUseSignedUrl": "Intellow\\SingleUseSignedUrl\\LaravelSingleUseSignedUrlFacade"
+                "SingleUseSignedUrl": "Benxmy\\SingleUseSignedUrl\\LaravelSingleUseSignedUrlFacade"
             }
         }
     }

@@ -21,6 +21,8 @@ class CreateSingleUseSignedUrlsTable extends Migration
             $table->timestamp('expires_at')->nullable();
             $table->ipAddress('accessed_by_ip')->nullable();
             $table->timestamp('accessed_at')->nullable();
+            $table->ipAddress('reaccessed_by_ip')->nullable();
+            $table->timestamp('reaccessed_at')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
         });

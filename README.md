@@ -1,9 +1,9 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/intellow/laravel-single-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-single-use-signed-url)
+<!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/intellow/laravel-single-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-single-use-signed-url)
 [![Build Status](https://img.shields.io/travis/intellow/laravel-single-use-signed-url/master.svg?style=flat-square)](https://travis-ci.org/intellow/laravel-single-use-signed-url)
 [![Quality Score](https://img.shields.io/scrutinizer/g/intellow/laravel-single-use-signed-url.svg?style=flat-square)](https://scrutinizer-ci.com/g/intellow/laravel-single-use-signed-url)
-[![Total Downloads](https://img.shields.io/packagist/dt/intellow/laravel-single-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-single-use-signed-url)
+[![Total Downloads](https://img.shields.io/packagist/dt/intellow/laravel-single-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-single-use-signed-url) -->
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
@@ -12,7 +12,7 @@ This is where your description should go. Try and limit it to a paragraph or two
 You can install the package via composer:
 
 ```bash
-composer require intellow/laravel-single-use-signed-url
+composer require benxmy/laravel-single-use-signed-url
 ```
 
 ## Usage
@@ -48,13 +48,10 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Security
-
-If you discover any security related issues, please email kevin@intellow.com instead of using the issue tracker.
-
 ## Credits
 
-- [Intellow](https://github.com/intellow)
+- Original package by: [Intellow](https://github.com/intellow)
+- [benxmy](https://github.com/benxmy)
 - [All Contributors](../../contributors)
 
 ## License
