@@ -1,12 +1,12 @@
 <?php
 
-namespace Benxmy\LaravelSingleUseSignedUrl\Tests;
+namespace Benxmy\LaravelDualUseSignedUrl\Tests;
 
 use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Facades\Route;
-use Benxmy\SingleUseSignedUrl\LaravelSingleUseSignedUrlFacade;
-use Benxmy\SingleUseSignedUrl\LaravelSingleUseSignedUrlServiceProvider;
-use Benxmy\SingleUseSignedUrl\SingleUseSignedUrl;
+use Benxmy\DualUseSignedUrl\LaravelDualUseSignedUrlFacade;
+use Benxmy\DualUseSignedUrl\LaravelDualUseSignedUrlServiceProvider;
+use Benxmy\DualUseSignedUrl\DualUseSignedUrl;
 use Orchestra\Testbench\TestCase;
 
 class ExampleTest extends TestCase
@@ -24,31 +24,31 @@ class ExampleTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            LaravelSingleUseSignedUrlServiceProvider::class,
+            LaravelDualUseSignedUrlServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'SingleUseSignedUrl' => LaravelSingleUseSignedUrlFacade::class,
+            'DualUseSignedUrl' => LaravelDualUseSignedUrlFacade::class,
         ];
     }
 
     /** @test */
-    public function single_use_signed_url_can_be_generated_when_route_exists()
+    public function dual_use_signed_url_can_be_generated_when_route_exists()
     {
-        $singleUseSignedUrl = new SingleUseSignedUrl();
-        $singleUseSignedUrl->make('signed-route', 1, 60);
-        $this->assertNotEmpty($singleUseSignedUrl->user_id);
+        $dualUseSignedUrl = new DualUseSignedUrl();
+        $dualUseSignedUrl->make('signed-route', 1, 60);
+        $this->assertNotEmpty($dualUseSignedUrl->user_id);
     }
 
     /** @test */
-    public function single_use_signed_url_cannot_be_generated_when_route_does_not_exist()
+    public function dual_use_signed_url_cannot_be_generated_when_route_does_not_exist()
     {
-        $singleUseSignedUrl = new SingleUseSignedUrl();
+        $dualUseSignedUrl = new DualUseSignedUrl();
         $this->expectException(\Exception::class);
-        $singleUseSignedUrl->make('does-not-exist', 1);
+        $dualUseSignedUrl->make('does-not-exist', 1);
     }
 
 

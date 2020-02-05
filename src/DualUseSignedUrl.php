@@ -1,14 +1,14 @@
 <?php
 
-namespace Benxmy\SingleUseSignedUrl;
+namespace Benxmy\DualUseSignedUrl;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-class SingleUseSignedUrl extends Model
+class DualUseSignedUrl extends Model
 {
-    protected $table = 'single_use_signed_urls';
+    protected $table = 'dual_use_signed_urls';
 
     protected $dates = [
         'accessed_at', 
@@ -24,7 +24,7 @@ class SingleUseSignedUrl extends Model
     ];
 
     /**
-     * Create a new single-use url and save in the DB.
+     * Create a new dual-use url and save in the DB.
      * 
      * @param  String $routeName        
      * @param  String $userId           
@@ -40,7 +40,7 @@ class SingleUseSignedUrl extends Model
             throw new \Exception('userId required in routeParams array');
         }
         
-        $urlObj = new SingleUseSignedUrl;
+        $urlObj = new DualUseSignedUrl;
         if($old = $urlObj->exists($routeParams['user'])) {
             $old->delete();
         }
@@ -65,7 +65,7 @@ class SingleUseSignedUrl extends Model
 
     private function generateUrl(Array $routeParams)
     {
-        return route($this->route_name, $routeParams) . '?singleUseKey=' . $this->key;
+        return route($this->route_name, $routeParams) . '?dualUseKey=' . $this->key;
     }
 
     private function exists($userId)

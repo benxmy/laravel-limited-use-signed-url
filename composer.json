@@ -1,11 +1,11 @@
 {
-    "name": "benxmy/laravel-single-use-signed-url",
-    "description": "Laravel Single Use Signed URL",
+    "name": "benxmy/laravel-dual-use-signed-url",
+    "description": "Laravel Dual Use Signed URL",
     "keywords": [
         "benxmy",
-        "laravel-single-use-signed-url"
+        "laravel-dual-use-signed-url"
     ],
-    "homepage": "https://github.com/benxmy/laravel-single-use-signed-url",
+    "homepage": "https://github.com/benxmy/laravel-dual-use-signed-url",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Benxmy\\SingleUseSignedUrl\\": "src"
+            "Benxmy\\DualUseSignedUrl\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Benxmy\\SingleUseSignedUrl\\Tests\\": "tests"
+            "Benxmy\\DualUseSignedUrl\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,10 +50,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Benxmy\\SingleUseSignedUrl\\LaravelSingleUseSignedUrlServiceProvider"
+                "Benxmy\\DualUseSignedUrl\\LaravelDualUseSignedUrlServiceProvider"
             ],
             "aliases": {
-                "SingleUseSignedUrl": "Benxmy\\SingleUseSignedUrl\\LaravelSingleUseSignedUrlFacade"
+                "DualUseSignedUrl": "Benxmy\\DualUseSignedUrl\\LaravelDualUseSignedUrlFacade"
             }
         }
     }

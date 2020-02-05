@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSingleUseSignedUrlsTable extends Migration
+class CreateDualUseSignedUrlsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSingleUseSignedUrlsTable extends Migration
      */
     public function up()
     {
-        Schema::create('single_use_signed_urls', function (Blueprint $table) {
+        Schema::create('dual_use_signed_urls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('route_name');
             $table->string('key');
@@ -35,6 +35,6 @@ class CreateSingleUseSignedUrlsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('single_use_signed_urls');
+        Schema::dropIfExists('dual_use_signed_urls');
     }
 }

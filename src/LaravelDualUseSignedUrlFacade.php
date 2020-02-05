@@ -1,13 +1,13 @@
 <?php
 
-namespace Benxmy\SingleUseSignedUrl;
+namespace Benxmy\DualUseSignedUrl;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Benxmy\LaravelSingleUseSignedUrl\Skeleton\SkeletonClass
+ * @see \Benxmy\LaravelDualUseSignedUrl\Skeleton\SkeletonClass
  */
-class LaravelSingleUseSignedUrlFacade extends Facade
+class LaravelDualUseSignedUrlFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class LaravelSingleUseSignedUrlFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-single-use-signed-url';
+        return 'laravel-dual-use-signed-url';
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Benxmy\SingleUseSignedUrl;
+namespace Benxmy\DualUseSignedUrl;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelSingleUseSignedUrlServiceProvider extends ServiceProvider
+class LaravelDualUseSignedUrlServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -16,7 +16,7 @@ class LaravelSingleUseSignedUrlServiceProvider extends ServiceProvider
          */
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        app('router')->aliasMiddleware('validateSingleUseSignedUrl', ValidateSingleUseSignedUrl::class);
+        app('router')->aliasMiddleware('validateDualUseSignedUrl', ValidateDualUseSignedUrl::class);
     }
 
     /**
@@ -25,11 +25,11 @@ class LaravelSingleUseSignedUrlServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration (currently there is not configuration)
-        // $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-single-use-signed-url');
+        // $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-dual-use-signed-url');
 
         // Register the main class to use with the facade
-        $this->app->bind('laravel-single-use-signed-url', function () {
-            return new SingleUseSignedUrl;
+        $this->app->bind('laravel-dual-use-signed-url', function () {
+            return new DualUseSignedUrl;
         });
     }
 }

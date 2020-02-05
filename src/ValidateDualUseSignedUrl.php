@@ -1,47 +1,47 @@
 <?php
 
-namespace Benxmy\SingleUseSignedUrl;
+namespace Benxmy\DualUseSignedUrl;
 
 use Closure;
 use Illuminate\Routing\Exceptions\InvalidSignatureException;
 
-class ValidateSingleUseSignedUrl
+class ValidateDualUseSignedUrl
 {
     public function handle($request, Closure $next)
     {
-        $singleUseSignedUrl = SingleUseSignedUrl::where('key', $request->singleUseKey)
+        $dualUseSignedUrl = DualUseSignedUrl::where('key', $request->dualUseKey)
             ->whereNull('reaccessed_at')
             ->get()
             ->first();
 
-        if(!$singleUseSignedUrl) {
+        if(!$dualUseSignedUrl) {
             throw new InvalidSignatureException;
         }
-        if($request->route()->getName() != $singleUseSignedUrl->route_name) {
+        if($request->route()->getName() != $dualUseSignedUrl->route_name) {
             throw new InvalidSignatureException;
         }
         if(get_class($request->user)) {
-            if($request->user->id != $singleUseSignedUrl->user_id) {
+            if($request->user->id != $dualUseSignedUrl->user_id) {
                 throw new InvalidSignatureException;
             }
         } else {
-            if($request->user != $singleUseSignedUrl->user_id) {
+            if($request->user != $dualUseSignedUrl->user_id) {
                 throw new InvalidSignatureException;
             }
         }
 
-        if($singleUseSignedUrl->expires_at && now() > $singleUseSignedUrl->expires_at) {
+        if($dualUseSignedUrl->expires_at && now() > $dualUseSignedUrl->expires_at) {
             throw new InvalidSignatureException;
         }
 
-        if(!$singleUseSignedUrl->accessed_at) {
-            $singleUseSignedUrl->update([
+        if(!$dualUseSignedUrl->accessed_at) {
+            $dualUseSignedUrl->update([
                 'accessed_by_ip' => $request->ip(),
                 'accessed_at' => now(),
             ]);
         }
         else {
-            $singleUseSignedUrl->update([
+            $dualUseSignedUrl->update([
                 'reaccessed_by_ip' => $request->ip(),
                 'reaccessed_at' => now(),
             ]);            
