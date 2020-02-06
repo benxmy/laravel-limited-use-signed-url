@@ -1,11 +1,11 @@
-# Very short description of the package
+# Description
 
 <!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/intellow/laravel-dual-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-dual-use-signed-url)
 [![Build Status](https://img.shields.io/travis/intellow/laravel-dual-use-signed-url/master.svg?style=flat-square)](https://travis-ci.org/intellow/laravel-dual-use-signed-url)
 [![Quality Score](https://img.shields.io/scrutinizer/g/intellow/laravel-dual-use-signed-url.svg?style=flat-square)](https://scrutinizer-ci.com/g/intellow/laravel-dual-use-signed-url)
 [![Total Downloads](https://img.shields.io/packagist/dt/intellow/laravel-dual-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-dual-use-signed-url) -->
 
-This is a fork of [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-dual-use-signed-url). This version allows two accesses to the generated URL. This was originally created specifically for signed URLs that can be used as a temporary `src` url for media files.  Due to the way browsers often handle these urls, the request will be made twice -- once for a preflight request and the second time for the actual file. This implementation allows for the url to be used twice in quick succession, but then the url will become unavailable.
+This is a fork of [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-dual-use-signed-url). This version allows two accesses to the generated URL. This package was created specifically for signed URLs that can be used as a temporary `src` url for media files.  Due to the way browsers often handle these urls, the request will be made twice -- once for a preflight request and the second time for the actual file. This implementation allows for the url to be used twice in quick succession, but then the url will become unavailable. The url generated will only be available to the user who generates it and an expiration time can be set for the url usage.  A future update will include the optional paramater of 'uses_allowed' so the number of times the url is used can be set dynamically.
 
 ## Installation
 
@@ -15,26 +15,27 @@ You can install the package via composer:
 composer require benxmy/laravel-dual-use-signed-url
 ```
 
-## Usage
-I primarily use this to give users a link to login, but want the security of knowing that once the link has been used, it cannot ever be used again (which is why I don't use Laravel Signed URLs)
+Run `php artisan migrate` after you install.
 
-Make sure to run `php artisan migrate` after you install.
+## Usage
+I originally forked this from [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-dual-use-signed-url) so I could make it more difficult for someone to actually access a direct download link for an embedded `src` attribute url. The original package is quite useful for single-use URLs for password resets, etc. 
 
 First create a route that accepts a {user} as a parameter and give it a name. For example:
 
 ```php
-Route::get('/email-login/{user}', [DualUseSignedUrlController::class, 'handle'])
-->name('one-time-email-login')
+Route::get('/play-media/{user}', [DualUseSignedUrlController::class, 'handle'])
+->name('dual-use-url')
 ->middleware('validateDualUseSignedUrl');
 ```
+The above route can be whatever you want really.  The package will append the extra paramaeters in the background.  For example, you could create a route like: `Route::get('/play-media/{user}/{media}', ...)`. However, you **must** include the `{user}` as the first parameter in the route. 
 
 Then in a controller you can generate a dual use signed url to this route with the following:
 
 ``` php
-$url = DualUseSignedUrl::make('email-login', $userId, $expiresInMinutes);
+$url = DualUseSignedUrl::make('dual-use-url', $userId, $expiresInMinutes);
 ```
 
-Then just send that $url to the user in a notification or email and they can click the link once to login.
+For my use (as the `src` attribute), I can then simply pass the `$url` to the view and use it in the audio or video tag.
 
 ### Testing
 
@@ -50,8 +51,8 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
+- This customization: [benxmy](https://github.com/benxmy)
 - Original package by: [Intellow](https://github.com/intellow)
-- [benxmy](https://github.com/benxmy)
 - [All Contributors](../../contributors)
 
 ## License
