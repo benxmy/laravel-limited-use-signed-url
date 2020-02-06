@@ -14,12 +14,6 @@
             "email": "benxmy@gmail.com",
             "role": "Developer"
         },
-        {
-            "name": "Intellow",
-            "email": "kevin@intellow.com",
-            "role": "Developer"
-        }
-
     ],
     "require": {
         "php": "^7.1",
