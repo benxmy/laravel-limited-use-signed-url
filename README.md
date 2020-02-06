@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/benxmy/laravel-dual-use-signed-url.svg?style=flat-square)](https://scrutinizer-ci.com/g/benxmy/laravel-dual-use-signed-url)
 [![Total Downloads](https://img.shields.io/packagist/dt/benxmy/laravel-dual-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/benxmy/laravel-dual-use-signed-url) -->
 
-This is a fork of [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-dual-use-signed-url). This version allows two accesses to the generated URL. This package was created specifically for signed URLs that can be used as a temporary `src` url for media files.  Due to the way browsers often handle these urls, the request will be made twice -- once for a preflight request and the second time for the actual file. This implementation allows for the url to be used twice in quick succession, but then the url will become unavailable. The url generated will only be available to the user who generates it and an expiration time can be set for the url usage.  A future update will include the optional paramater of 'uses_allowed' so the number of times the url is used can be set dynamically.
+This is a fork of [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-single-use-signed-url). This version allows two accesses to the generated URL. This package was created specifically for signed URLs that can be used as a temporary `src` url for media files.  Due to the way browsers often handle these urls, the request will be made twice -- once for a preflight request and the second time for the actual file. This implementation allows for the url to be used twice in quick succession, but then the url will become unavailable. The url generated will only be available to the user who generates it and an expiration time can be set for the url usage.  A future update will include the optional paramater of 'uses_allowed' so the number of times the url is used can be set dynamically.
 
 ## Installation
 
@@ -18,7 +18,7 @@ composer require benxmy/laravel-dual-use-signed-url
 Run `php artisan migrate` after you install.
 
 ## Usage
-I originally forked this from [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-dual-use-signed-url) so I could make it more difficult for someone to actually access a direct download link for an embedded `src` attribute url. The original package is quite useful for single-use URLs for password resets, etc. 
+I originally forked this from [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-single-use-signed-url) so I could make it more difficult for someone to actually access a direct download link for an embedded `src` attribute url. The original package is quite useful for single-use URLs for password resets, etc. 
 
 First create a route that accepts a {user} as a parameter and give it a name. For example:
 
