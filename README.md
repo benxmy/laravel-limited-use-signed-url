@@ -1,9 +1,9 @@
 # Description
 
-<!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/intellow/laravel-dual-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-dual-use-signed-url)
-[![Build Status](https://img.shields.io/travis/intellow/laravel-dual-use-signed-url/master.svg?style=flat-square)](https://travis-ci.org/intellow/laravel-dual-use-signed-url)
-[![Quality Score](https://img.shields.io/scrutinizer/g/intellow/laravel-dual-use-signed-url.svg?style=flat-square)](https://scrutinizer-ci.com/g/intellow/laravel-dual-use-signed-url)
-[![Total Downloads](https://img.shields.io/packagist/dt/intellow/laravel-dual-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/intellow/laravel-dual-use-signed-url) -->
+<!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/benxmy/laravel-dual-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/benxmy/laravel-dual-use-signed-url)
+[![Build Status](https://img.shields.io/travis/benxmy/laravel-dual-use-signed-url/master.svg?style=flat-square)](https://travis-ci.org/benxmy/laravel-dual-use-signed-url)
+[![Quality Score](https://img.shields.io/scrutinizer/g/benxmy/laravel-dual-use-signed-url.svg?style=flat-square)](https://scrutinizer-ci.com/g/benxmy/laravel-dual-use-signed-url)
+[![Total Downloads](https://img.shields.io/packagist/dt/benxmy/laravel-dual-use-signed-url.svg?style=flat-square)](https://packagist.org/packages/benxmy/laravel-dual-use-signed-url) -->
 
 This is a fork of [Laravel Dual Use Signed URL](https://github.com/intellow/laravel-dual-use-signed-url). This version allows two accesses to the generated URL. This package was created specifically for signed URLs that can be used as a temporary `src` url for media files.  Due to the way browsers often handle these urls, the request will be made twice -- once for a preflight request and the second time for the actual file. This implementation allows for the url to be used twice in quick succession, but then the url will become unavailable. The url generated will only be available to the user who generates it and an expiration time can be set for the url usage.  A future update will include the optional paramater of 'uses_allowed' so the number of times the url is used can be set dynamically.
 
