@@ -13,7 +13,7 @@
             "name": "Ben",
             "email": "benxmy@gmail.com",
             "role": "Developer"
-        },
+        }
     ],
     "require": {
         "php": "^7.1",
