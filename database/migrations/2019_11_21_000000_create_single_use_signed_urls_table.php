@@ -19,10 +19,12 @@ class CreateDualUseSignedUrlsTable extends Migration
             $table->string('key');
             $table->unsignedBigInteger('user_id');
             $table->timestamp('expires_at')->nullable();
-            $table->ipAddress('accessed_by_ip')->nullable();
-            $table->timestamp('accessed_at')->nullable();
-            $table->ipAddress('reaccessed_by_ip')->nullable();
-            $table->timestamp('reaccessed_at')->nullable();
+            $table->integer('uses_allowed')->default(1);
+            $table->integer('total_uses')->default(0);
+            $table->ipAddress('first_accessed_by_ip')->nullable();
+            $table->timestamp('first_accessed_at')->nullable();
+            $table->ipAddress('last_reaccessed_by_ip')->nullable();
+            $table->timestamp('last_reaccessed_at')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->timestamps();
         });
