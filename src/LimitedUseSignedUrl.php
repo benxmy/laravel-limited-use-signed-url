@@ -73,10 +73,10 @@ class LimitedUseSignedUrl extends Model
         return route($this->route_name, $extraParams) . 'limitedUseKey=' . $this->key;
     }
 
-    private function exists($urlData['user_id'], $urlData['routeName'])
+    private function exists($urlData['user_id'], $urlData['route_name'])
     {
         if(!is_null($entry = self::where('user_id', $urlData['user_id'])
-                                    ->where('route_name', $urlData['routeName'])
+                                    ->where('route_name', $urlData['route_name'])
                                     ->whereRaw('uses_allowed < total_uses')
                                     ->get()->first())) {
             return $entry;
