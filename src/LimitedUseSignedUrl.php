@@ -33,7 +33,7 @@ class LimitedUseSignedUrl extends Model
      */
     public static function makeUrl(Array $urlData, Array $extraParams) 
     {
-        if(!Route::has($urlData['route_name')) {
+        if(!Route::has($urlData['route_name'])) {
             throw new \Exception('route does not exist');
         }
         if(!key_exists('user', $urlData)) {
