@@ -1,5 +1,4 @@
 <?php
-
 namespace Benxmy\LimitedUseSignedUrl;
 
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +16,10 @@ class LimitedUseSignedUrl extends Model
     ];
 
     protected $fillable = [
+        'user_id',
+        'route_name',
         'uses_allowed',
+        'key',
         'first_accessed_by_ip', 
         'first_accessed_at',
         'last_reaccessed_at',
@@ -25,62 +27,14 @@ class LimitedUseSignedUrl extends Model
     ];
 
     /**
-     * Create a new limited-use url and save in the DB.
-     *    
-     * @param  Array $urlData - ['user_id', 'route_name', 'expires_in_minutes', 'uses_allowed'
-     * @param  Array $extraParams - extra route parameters 
-     * @return String                  
+     * Generates and returns the route needed
+     * @param  Array|array $params 
      */
-    public static function makeUrl(Array $urlData, Array $extraParams) 
+    public function generateUrl(Array $params = [])
     {
-        if(!Route::has($urlData['route_name'])) {
-            throw new \Exception('route does not exist');
-        }
-        if(!key_exists('user', $urlData)) {
-            throw new \Exception('user_id required in urlData array');
-        }
-        
-        $urlObj = new LimitedUseSignedUrl;
-        
-        // ***
-        // *** Check if this works!!
-        // ***
-        if($old = $urlObj->exists($urlData['user'], $urlData['route_name'])) {
-            $old->delete();
-        }
-        $urlObj->route_name = $urlData['route_name'];
-        $urlObj->user_id = $urlData['user_id'];
-        $urlObj->uses_allowed = $urlData['uses_allowed'];
+        $params['user_id'] = $this->user_id;
 
-        if(!is_null($urlData['expires_in_minutes'])) {
-            $urlObj->expires_at = now()->addMinutes($urlData['expires_in_minutes']);
-        }
-
-        $urlObj->created_by = Auth::user() ? Auth::user()->id : 0;
-        $urlObj->key = $urlObj->generateKey();
-        $urlObj->save();
-
-        return $urlObj->generateUrl($urlData);
+        return route($this->route_name, $params) . 'limitedUseKey=' . $this->key;
     }
 
-    public function generateKey()
-    {
-        return bin2hex(random_bytes(intdiv(50, 2)));
-    }
-
-    private function generateUrl(Array $urlData)
-    {
-        return route($this->route_name, $extraParams) . 'limitedUseKey=' . $this->key;
-    }
-
-    private function exists($urlData['user_id'], $urlData['route_name'])
-    {
-        if(!is_null($entry = self::where('user_id', $urlData['user_id'])
-                                    ->where('route_name', $urlData['route_name'])
-                                    ->whereRaw('uses_allowed < total_uses')
-                                    ->get()->first())) {
-            return $entry;
-        }
-        return null;
-    }
 }

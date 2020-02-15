@@ -17,6 +17,10 @@ class LaravelLimitedUseSignedUrlServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         app('router')->aliasMiddleware('validateLimitedUseSignedUrl', ValidateLimitedUseSignedUrl::class);
+
+        $this->publishes([
+            __DIR__ .  '../config/config.php' => config_path('limited-use-urls.php');
+        ]);
     }
 
     /**
