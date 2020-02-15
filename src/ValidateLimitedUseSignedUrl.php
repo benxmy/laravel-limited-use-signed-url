@@ -1,7 +1,8 @@
 <?php
 
-namespace Benxmy\limitedUseSignedUrl;
+namespace Benxmy\LimitedUseSignedUrl;
 
+use Benxmy\LimitedUseSignedUrl\LimitedUseSignedUrl;
 use Closure;
 use Illuminate\Routing\Exceptions\InvalidSignatureException;
 
@@ -9,8 +10,8 @@ class ValidateLimitedUseSignedUrl
 {
     public function handle($request, Closure $next)
     {
-        $limitedUseSignedUrl = limitedUseSignedUrl::where('key', $request->limitedUseKey)
-            ->whereRaw('uses_allowed < total_uses')
+        $limitedUseSignedUrl = LimitedUseSignedUrl::where('key', $request->limitedUseKey)
+            ->whereRaw('uses_allowed > total_uses')
             ->get()
             ->first();
 
