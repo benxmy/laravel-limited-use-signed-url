@@ -1,6 +1,6 @@
 <?php
 
-namespace Benxmy\LimitedUseSignedUrl;
+namespace Mindlarkdev\LimitedUseSignedUrl;
 
 use Illuminate\Support\ServiceProvider;
 

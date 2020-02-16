@@ -1,7 +1,7 @@
 <?php
-namespace Benxmy\LimitedUseSignedUrl;
+namespace Mindlarkdev\LimitedUseSignedUrl;
 
-use Benxmy\LimitedUseSignedUrl\LimitedUseSignedUrl;
+use Mindlarkdev\LimitedUseSignedUrl\LimitedUseSignedUrl;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use LimitedUseSignedUrlModel;

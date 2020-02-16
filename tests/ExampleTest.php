@@ -1,12 +1,12 @@
 <?php
 
-namespace Benxmy\LaravelDualUseSignedUrl\Tests;
+namespace Mindlarkdev\LaravelDualUseSignedUrl\Tests;
 
 use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Facades\Route;
-use Benxmy\DualUseSignedUrl\LaravelDualUseSignedUrlFacade;
-use Benxmy\DualUseSignedUrl\LaravelDualUseSignedUrlServiceProvider;
-use Benxmy\DualUseSignedUrl\DualUseSignedUrl;
+use Mindlarkdev\DualUseSignedUrl\LaravelDualUseSignedUrlFacade;
+use Mindlarkdev\DualUseSignedUrl\LaravelDualUseSignedUrlServiceProvider;
+use Mindlarkdev\DualUseSignedUrl\DualUseSignedUrl;
 use Orchestra\Testbench\TestCase;
 
 class ExampleTest extends TestCase

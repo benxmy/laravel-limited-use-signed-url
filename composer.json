@@ -1,17 +1,16 @@
 {
-    "name": "benxmy/laravel-limited-use-signed-url",
+    "name": "mindlarkdev/laravel-limited-use-signed-url",
     "description": "Laravel Limited Use Signed URL",
     "keywords": [
-        "benxmy",
+        "mindlarkdev",
         "laravel-limited-use-signed-url"
     ],
-    "homepage": "https://github.com/benxmy/laravel-limited-use-signed-url",
+    "homepage": "https://github.com/mindlarkdev/laravel-limited-use-signed-url",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "Ben",
-            "email": "benxmy@gmail.com",
+            "email": "themindlark@gmail.com",
             "role": "Developer"
         }
     ],
@@ -25,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Benxmy\\LimitedUseSignedUrl\\": "src"
+            "Mindlarkdev\\LimitedUseSignedUrl\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Benxmy\\LimitedUseSignedUrl\\Tests\\": "tests"
+            "Mindlarkdev\\LimitedUseSignedUrl\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Benxmy\\LimitedUseSignedUrl\\LaravelLimitedUseSignedUrlServiceProvider"
+                "Mindlarkdev\\LimitedUseSignedUrl\\LaravelLimitedUseSignedUrlServiceProvider"
             ],
             "aliases": {
-                "LimitedUseSignedUrl": "Benxmy\\LimitedUseSignedUrl\\LaravelLimitedUseSignedUrlFacade"
+                "LimitedUseSignedUrl": "Mindlarkdev\\LimitedUseSignedUrl\\LaravelLimitedUseSignedUrlFacade"
             }
         }
     }

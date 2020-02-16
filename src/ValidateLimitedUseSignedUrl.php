@@ -1,8 +1,8 @@
 <?php
 
-namespace Benxmy\LimitedUseSignedUrl;
+namespace Mindlarkdev\LimitedUseSignedUrl;
 
-use Benxmy\LimitedUseSignedUrl\LimitedUseSignedUrl;
+use Mindlarkdev\LimitedUseSignedUrl\LimitedUseSignedUrl;
 use Closure;
 use Illuminate\Routing\Exceptions\InvalidSignatureException;
 

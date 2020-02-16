@@ -1,5 +1,5 @@
 <?php
-namespace Benxmy\LimitedUseSignedUrl;
+namespace Mindlarkdev\LimitedUseSignedUrl;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
