@@ -9,13 +9,29 @@ This is an extensive modification of [Laravel Single Use Signed URL](https://git
 
 ## Installation
 
-You can install the package via composer:
+1. Install with composer:
 
 ```bash
 composer require mindlarkdev/laravel-limited-use-signed-url
 ```
 
-Run `php artisan migrate` after you install.
+2. Publish the configuration file:
+```bash
+php artisan vendor:publish 
+```
+Select the `Mindlarkdev\LimitedUseSignedUrl\LaravelLimitedUseSIgnedUrlSeviceProvider` item.
+
+The config file is named `limited-use-urls.php` and has the following options:
+```
+return [
+	'expires_in_minutes' => 2,
+	'uses_allowed' => 2,
+]
+```
+
+These settings allow you to set the default expiration and allowed uses. These parameters can also be overridden when a url is created in a controller.
+
+3. Run `php artisan migrate`.
 
 ## Usage
 I originally forked this from [Laravel Limited Use Signed URL](https://github.com/intellow/laravel-limited-use-signed-url) so I could make it more difficult for someone to actually access a direct download link for an embedded `src` attribute url. The original package is quite useful for limited-use URLs for password resets, etc. 
@@ -35,12 +51,13 @@ Then in a controller you can generate a dual use signed url to this route with t
 $urlData = [
 	'route_name' => 'limited-use-url',
 	'user_id' => auth()->user()->id,
+	'expires_in_minutes' => 3, // OPTIONAL - default set in config file
+	'uses_allowed' => 1 // OPTIONAL - default set in config file
 ];
 $extraParams = ['content' => $content->id]; // Extra params will be added to the route. In the above example, we're using {content}
 
 $url = MakeLimitedUseSignedUrl::makeUrl('limited-use-url', $urlData, $extraParams);
 ```
-
 For my use (as the `src` attribute), I can then simply pass the `$url` to the view and use it in the audio or video tag.
 
 ### Testing
